@@ -36,8 +36,9 @@ The vendored spec is [`api/openapi.json`](api/openapi.json), downloaded from
 
 **Client capabilities:**
 
-- Every operation is a typed `*WithResponse` method with `JSON200`, `JSON400`,
-  and other status fields.
+- Every operation has a typed response method (`*WithResponse`,
+  `*WithBodyWithResponse`, or `*WithFormdataBodyWithResponse`) with `JSON200`,
+  `JSON400`, and other status fields.
 - API-key authentication for every request, using
   `x-api-key: keystring:shared_secret`.
 - OAuth 2.0 authorization-code flow with PKCE (S256), in the independent
