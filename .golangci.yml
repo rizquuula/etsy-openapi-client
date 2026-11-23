@@ -1,0 +1,62 @@
+version: "2"
+
+run:
+  timeout: 5m
+
+linters:
+  enable:
+    - bodyclose
+    - contextcheck
+    - errcheck
+    - errorlint
+    - govet
+    - ineffassign
+    - staticcheck
+    - unused
+    - funlen
+    - gocyclo
+    - cyclop
+    - gocognit
+    - nestif
+    - lll
+    - dupl
+    - maintidx
+    - revive
+  settings:
+    funlen:
+      lines: 60
+      statements: 40
+      ignore-comments: true
+    gocyclo:
+      min-complexity: 15
+    cyclop:
+      max-complexity: 15
+      package-average: 8.0
+    gocognit:
+      min-complexity: 30
+    nestif:
+      min-complexity: 4
+    lll:
+      line-length: 120
+      tab-width: 4
+    dupl:
+      threshold: 150
+    maintidx:
+      under: 20
+    revive:
+      rules:
+        - name: argument-limit
+          arguments: [5]
+        - name: function-result-limit
+          arguments: [3]
+  exclusions:
+    generated: lax
+    paths:
+      - api\.gen\.go
+    rules:
+      - path: _test\.go
+        linters:
+          - funlen
+          - dupl
+          - lll
+          - gocognit
